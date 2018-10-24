@@ -47,7 +47,7 @@ ExpressBrute.prototype.getMiddleware = function (options) {
 		keyFunc(req, res, _.bind(function (key) {
 			if(!options.ignoreIP) {
 				let ip = req.get("X-Forwarded-For") || req.connection.remoteAdress || req.ip;
-				ip = ip ? ip.split(", ").pop() || "";
+				ip = ip ? ip.split(", ").pop() : "";
 				key = ExpressBrute._getKey([ip, this.name, key]);
 			} else {
 				key = ExpressBrute._getKey([this.name, key]);
